@@ -1,60 +1,93 @@
-
-Live : https://mr-arez.github.io/Css-Tools/
-
 # CSS Tools — Visual CSS Playground
 
-A responsive, utility-first CSS playground for experimenting with a sample component and inspecting the CSS output. The interface is built with semantic HTML and Tailwind CSS v4, with a small amount of custom CSS reserved for theme tokens, range sliders, and the CSS-only mobile drawer.
+A collection of interactive CSS development tools designed to help frontend developers create, customize, and experiment with CSS styles visually.
+
+🌐 **Live Demo:** [CSS Tools](https://mr-arez.github.io/Css-Tools/)
+
+## Overview
+
+CSS Tools is a browser-based development playground that makes CSS styling easier and faster through interactive controls and real-time previews.
+
+The goal of this project is to simplify common CSS styling tasks and provide developers with a practical environment to experiment with visual properties and generate clean CSS code.
 
 ## Features
 
-- Responsive workspace for narrow mobile screens through desktop layouts
-- Five application themes: Classic Purple, Dark, Green, Red, and Orange
-- Component preview with controls for border radius, padding, background color, and opacity
-- Generated CSS panel with syntax-color hooks
-- Mobile navigation drawer that opens and closes without JavaScript
-- Stable element IDs and `data-*` attributes intended for your JavaScript implementation
-- Keyboard-visible focus styles and reduced-motion support
+- **CSS Playground:** Customize component styles with live previews.
+- **Color Palette:** Explore and work with color combinations.
+- **Gradient Maker:** Create and customize CSS gradients.
+- **Box Shadow Generator:** Experiment with shadow properties.
+- **Flexbox Lab:** Practice and explore Flexbox layouts.
+- **Live Preview:** See styling changes instantly.
+- **CSS Code Generator:** Generate CSS based on selected settings.
+- **Copy to Clipboard:** Easily copy generated CSS code.
+- **Responsive Preview:** Experiment with different viewport sizes.
 
-> **JavaScript is intentionally not implemented.** `js/app.js` is a starter file so you can implement the interaction logic yourself. Theme switching and the mobile drawer use CSS only.
+## Technologies
 
-## Requirements
+- HTML5
+- CSS3
+- JavaScript
+- Tailwind CSS
+- Git & GitHub
 
-- Node.js 20 or later
-- npm
-
-## Getting started
-
-```bash
-npm install
-npm run watch:css
-```
-
-The watcher rebuilds `css/style.css` whenever `index.html` or `css/input.css` changes. Open `index.html` in a browser to preview the interface. To create a one-time optimized stylesheet, run:
-
-```bash
-npm run build:css
-```
-
-The compiled `css/style.css` is committed so the static interface can render without running the build step first. Run the build whenever you add or change Tailwind utility classes in the HTML.
-
-## Project structure
+## Project Structure
 
 ```text
-css-tools/
-├── index.html          # Accessible page structure and Tailwind utility classes
+CSS-Tools/
+│
 ├── css/
-│   ├── input.css       # Tailwind entry point, design tokens, and minimal custom CSS
-│   └── style.css       # Compiled stylesheet loaded by the page
+│   ├── input.css
+│   └── style.css
+│
 ├── js/
-│   └── app.js          # Empty starter for your JavaScript implementation
+│   └── app.js
+│
+├── index.html
 ├── package.json
+├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
-## JavaScript integration points
+## Project Goals
 
-Use the stable IDs and `data-*` attributes in `index.html` to wire up the controls. Important hooks include `#preview-card`, `#border-radius-control`, `#padding-control`, `#opacity-control`, `#background-color-control`, `#generated-css-lines`, `#copy-css-button`, `#reset-controls-button`, and the `data-tab`, `data-panel`, `data-color`, and `data-viewport` attributes.
+- Build practical tools for frontend developers.
+- Improve CSS development workflows.
+- Explore interactive UI development with JavaScript.
+- Practice modern frontend development concepts.
+- Create a useful collection of reusable CSS utilities.
 
-## License
+## Getting Started
 
-MIT. See [LICENSE](LICENSE).
+Clone the repository:
+
+```bash
+git clone https://github.com/Mr-AREZ/Css-Tools.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd Css-Tools
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development environment using the available project script in `package.json`.
+
+## Developer
+
+**Amirreza Arezoumand**
+
+Web Developer | SEO Specialist | Business Development Consultant
+
+- GitHub: [@Mr-AREZ](https://github.com/Mr-AREZ)
+- Portfolio: [AREZ Portfolio](https://mr-arez.github.io/Arez-portfolio/)
+
+---
+
+© 2026 Amirreza Arezoumand. All Rights Reserved.
