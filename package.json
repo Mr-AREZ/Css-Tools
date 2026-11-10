@@ -1,0 +1,15 @@
+{
+  "name": "css-tools",
+  "version": "1.0.0",
+  "private": false,
+  "description": "A responsive visual CSS playground built with semantic HTML and Tailwind CSS v4.",
+  "type": "module",
+  "scripts": {
+    "build:css": "@tailwindcss/cli -i ./css/input.css -o ./css/style.css --minify",
+    "watch:css": "@tailwindcss/cli -i ./css/input.css -o ./css/style.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.10",
+    "tailwindcss": "^4.1.10"
+  }
+}

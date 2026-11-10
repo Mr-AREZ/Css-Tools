@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A responsive visual CSS playground. Customize a component, preview the styles, and export clean CSS.">
+  <meta name="theme-color" content="#F4F7FB">
+  <title>CSS Tools — Visual CSS Playground</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Intentionally empty: implement the JavaScript yourself in js/app.js. -->
+  <script src="js/app.js" defer></script>
+</head>
+<body class="min-h-screen bg-app-canvas font-sans text-app-ink antialiased">
+  <div class="app-shell min-h-screen bg-app-canvas text-app-ink" id="app-shell">
+    <!-- CSS-only drawer trigger. Keep this before the header for the sibling selectors. -->
+    <input class="mobile-menu-toggle sr-only" type="checkbox" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+
+    <header class="topbar sticky top-0 z-30 flex min-h-[68px] w-full items-center justify-between gap-2 border-b border-app-border bg-app-panel px-3 sm:gap-3 sm:px-5 lg:px-7">
+      <a class="inline-flex min-w-0 shrink-0 items-center gap-1.5 no-underline sm:gap-2" href="#main-content" aria-label="CSS Tools home">
+        <span class="text-[25px] font-semibold leading-none text-app-accent sm:text-[29px]" aria-hidden="true">◇</span>
+        <span class="whitespace-nowrap text-base font-extrabold tracking-[-0.055em] text-app-ink sm:text-xl">CSS Tools</span>
+        <span class="hidden rounded-md bg-app-accent-soft px-1.5 py-1 text-[8px] font-bold tracking-wide text-app-accent min-[360px]:inline-flex">BETA</span>
+      </a>
+
+      <nav class="hidden items-center gap-2 whitespace-nowrap text-xs text-app-muted md:flex" aria-label="Breadcrumb">
+        <span>Tools</span>
+        <span class="text-slate-400" aria-hidden="true">/</span>
+        <span aria-current="page">CSS Playground</span>
+      </nav>
+
+      <fieldset class="theme-picker ml-auto flex shrink-0 items-center gap-0.5 border-0 p-0 min-[360px]:gap-1 sm:ml-auto sm:gap-1.5" aria-label="Choose application theme">
+        <legend class="sr-only">Application theme</legend>
+        <input class="theme-picker__input" type="radio" name="app-theme" id="theme-default" value="default" checked>
+        <label class="theme-picker__option theme-picker__option--default" for="theme-default" title="Classic purple theme" aria-label="Classic purple theme"><span></span></label>
+        <input class="theme-picker__input" type="radio" name="app-theme" id="theme-dark" value="dark">
+        <label class="theme-picker__option theme-picker__option--dark" for="theme-dark" title="Dark theme" aria-label="Dark theme"><span></span></label>
+        <input class="theme-picker__input" type="radio" name="app-theme" id="theme-green" value="green">
+        <label class="theme-picker__option theme-picker__option--green" for="theme-green" title="Green theme" aria-label="Green theme"><span></span></label>
+        <input class="theme-picker__input" type="radio" name="app-theme" id="theme-red" value="red">
+        <label class="theme-picker__option theme-picker__option--red" for="theme-red" title="Red theme" aria-label="Red theme"><span></span></label>
+        <input class="theme-picker__input" type="radio" name="app-theme" id="theme-orange" value="orange">
+        <label class="theme-picker__option theme-picker__option--orange" for="theme-orange" title="Orange theme" aria-label="Orange theme"><span></span></label>
+      </fieldset>
+
+      <label class="mobile-menu-button grid h-8 w-8 shrink-0 cursor-pointer place-items-center rounded-lg border border-app-border bg-app-panel text-app-ink transition hover:bg-app-accent-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-app-accent sm:h-9 sm:w-9 lg:hidden" for="mobile-menu-toggle" aria-hidden="true">
+        <span class="mobile-menu-button__bars flex w-3.5 flex-col gap-[3px]" aria-hidden="true">
+          <span class="mobile-menu-button__bar h-0.5 w-full rounded-full bg-current"></span>
+          <span class="mobile-menu-button__bar h-0.5 w-full rounded-full bg-current"></span>
+          <span class="mobile-menu-button__bar h-0.5 w-full rounded-full bg-current"></span>
+        </span>
+      </label>
+      <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-app-accent-soft text-xs font-bold text-app-accent sm:h-9 sm:w-9" role="img" aria-label="Profile avatar">A</span>
+    </header>
+
+    <div class="app-layout relative min-w-0 lg:grid lg:grid-cols-[232px_minmax(0,1fr)]">
+      <label class="mobile-menu-backdrop" for="mobile-menu-toggle" aria-hidden="true"></label>
+
+      <aside class="sidebar fixed inset-y-[68px] left-0 z-50 flex w-[min(282px,calc(100vw-52px))] min-w-0 -translate-x-[105%] flex-col overflow-x-hidden overflow-y-auto border-r border-app-border bg-app-panel px-3 py-6 shadow-2xl transition-transform duration-200 lg:sticky lg:top-[68px] lg:h-[calc(100vh-68px)] lg:w-auto lg:translate-x-0 lg:overflow-visible lg:shadow-none" aria-label="Development tools">
+        <p class="mx-3 mb-0 text-[9px] font-bold tracking-[0.08em] text-app-muted">DEVELOPMENT TOOLS</p>
+        <nav class="mt-5 flex flex-col gap-1.5" aria-label="Tools">
+          <a class="flex min-h-10 items-center gap-3 rounded-xl bg-app-accent-soft px-3 py-2 text-xs font-semibold text-app-accent no-underline" href="#main-content" aria-current="page">
+            <span class="w-5 text-center text-base" aria-hidden="true">⌘</span><span>CSS Playground</span>
+          </a>
+          <a class="flex min-h-10 items-center gap-3 rounded-xl px-3 py-2 text-xs text-app-muted no-underline transition hover:bg-app-accent-soft hover:text-app-accent" href="#color-controls">
+            <span class="w-5 text-center text-base" aria-hidden="true">◉</span><span>Color Palette</span>
+          </a>
+          <a class="flex min-h-10 items-center gap-3 rounded-xl px-3 py-2 text-xs text-app-muted no-underline transition hover:bg-app-accent-soft hover:text-app-accent" href="#color-controls">
+            <span class="w-5 text-center text-base" aria-hidden="true">▦</span><span>Gradient Maker</span>
+          </a>
+          <a class="flex min-h-10 items-center gap-3 rounded-xl px-3 py-2 text-xs text-app-muted no-underline transition hover:bg-app-accent-soft hover:text-app-accent" href="#panel-shadow">
+            <span class="w-5 text-center text-base" aria-hidden="true">◩</span><span>Box Shadow</span>
+          </a>
+          <a class="flex min-h-10 items-center gap-3 rounded-xl px-3 py-2 text-xs text-app-muted no-underline transition hover:bg-app-accent-soft hover:text-app-accent" href="#style-controls">
+            <span class="w-5 text-center text-base" aria-hidden="true">◇</span><span>Flexbox Lab</span>
+          </a>
+        </nav>
+
+        <section class="quick-tip mt-auto rounded-2xl bg-app-tip p-4 text-app-tip-foreground" aria-labelledby="quick-tip-title">
+          <span class="mb-3 block text-xl leading-none text-app-aqua" aria-hidden="true">✦</span>
+          <h2 class="mb-2 text-xs font-semibold" id="quick-tip-title">Quick tip</h2>
+          <p class="text-[10px] leading-relaxed text-app-tip-muted">Adjust the controls and see your CSS update live.</p>
+        </section>
+      </aside>
+
+      <main class="main-content mx-auto w-full min-w-0 max-w-[1600px] px-3 py-6 sm:px-5 lg:px-7 xl:px-10" id="main-content">
+        <section class="page-heading mb-6 flex min-w-0 flex-col gap-4 sm:flex-row sm:items-center sm:justify-between" aria-labelledby="page-title">
+          <div class="min-w-0">
+            <h1 class="mb-2 text-[clamp(1.5rem,4vw,1.875rem)] font-extrabold leading-tight tracking-[-0.05em] text-app-ink" id="page-title">CSS Playground</h1>
+            <p class="max-w-2xl text-xs leading-relaxed text-app-muted sm:text-sm">Build UI styles visually and export clean CSS in seconds.</p>
+          </div>
+          <div class="live-status inline-flex w-fit max-w-full items-center gap-2 rounded-xl border border-app-border bg-app-panel px-3 py-2 text-[10px] font-semibold text-app-success sm:text-xs" role="status" aria-live="polite">
+            <span class="h-2 w-2 shrink-0 rounded-full bg-app-success" aria-hidden="true"></span><span>Live preview active</span>
+          </div>
+        </section>
+
+        <div class="workspace-grid grid min-w-0 grid-cols-1 items-start gap-4 xl:grid-cols-[minmax(0,1.85fr)_minmax(300px,0.98fr)] 2xl:grid-cols-[minmax(0,1.9fr)_minmax(340px,0.98fr)] xl:gap-5">
+          <section class="preview-workspace min-w-0 overflow-hidden rounded-[18px] bg-app-code p-3 text-app-code-text sm:p-5 xl:p-[22px]" aria-labelledby="preview-title">
+            <div class="mb-4 flex items-center justify-between gap-3">
+              <h2 class="m-0 text-[9px] font-bold tracking-[0.08em] text-app-code-muted" id="preview-title">LIVE CANVAS</h2>
+              <span class="h-2 w-2 rounded-full bg-app-aqua shadow-[0_0_0_3px_rgb(37_199_181_/_12%)]" role="img" aria-label="Preview is active"></span>
+            </div>
+
+            <div class="min-w-0 overflow-hidden rounded-[13px] bg-app-browser text-app-ink">
+              <div class="browser-bar relative flex min-h-[35px] items-center justify-center bg-app-browser-bar px-2.5 py-1.5" aria-label="Preview browser toolbar">
+                <div class="absolute left-3 flex items-center gap-1.5" aria-hidden="true">
+                  <span class="h-[9px] w-[9px] rounded-full bg-[#FF6B70]"></span>
+                  <span class="h-[9px] w-[9px] rounded-full bg-[#FFC45C]"></span>
+                  <span class="h-[9px] w-[9px] rounded-full bg-[#3ECF8E]"></span>
+                </div>
+                <p class="m-0 w-[56%] max-w-[305px] truncate rounded-md bg-app-canvas px-2 py-1 text-center text-[9px] text-app-muted">localhost:3000/preview</p>
+              </div>
+
+              <div class="preview-stage flex min-h-[250px] min-w-0 items-center justify-center bg-app-browser px-2 py-6 sm:min-h-[350px] sm:px-6 sm:py-8 xl:min-h-[325px] xl:px-9 xl:py-6">
+                <article class="sample-card relative isolate flex min-h-[248px] w-full max-w-[600px] min-w-0 flex-col items-start overflow-hidden rounded-[20px] border border-app-card-border bg-app-card px-4 py-5 text-app-ink shadow-[0_8px_24px_rgb(24_34_56_/_3%)] transition-[border-radius,padding,background-color,opacity] duration-150 sm:px-7 sm:py-6" id="preview-card" aria-label="Sample component preview">
+                  <span class="sample-card__decoration pointer-events-none absolute right-4 top-4 -z-10 grid h-12 w-12 place-items-center rounded-full bg-app-accent-soft sm:right-[22px] sm:top-5" aria-hidden="true"><span class="h-4 w-4 rounded-full bg-app-accent"></span></span>
+                  <p class="sample-card__eyebrow mb-3.5 text-[9px] font-bold leading-snug tracking-[0.05em] text-app-accent sm:mb-[17px]">YOUR COMPONENT</p>
+                  <h3 class="sample-card__title mb-3.5 max-w-[360px] text-[clamp(1.2rem,5.7vw,1.7rem)] font-extrabold leading-[1.18] tracking-[-0.045em] text-app-ink sm:text-[27px]">Build something<br>beautiful.</h3>
+                  <p class="sample-card__description mb-6 max-w-full text-[11px] leading-relaxed text-app-muted">Clean CSS. Instant feedback.</p>
+                  <div class="sample-card__actions mt-auto flex w-full min-w-0 flex-wrap items-center gap-2.5">
+                    <a class="sample-card__button inline-flex min-h-[38px] max-w-full items-center justify-center gap-2 rounded-[11px] bg-app-accent px-4 py-2 text-center text-[11px] font-semibold leading-tight text-white no-underline transition hover:bg-app-accent-hover active:translate-y-px" href="#generated-css">Get started <span aria-hidden="true">↗</span></a>
+                    <span class="sample-card__radius-label ml-auto inline-flex min-h-[38px] max-w-full items-center justify-center rounded-[10px] bg-app-accent-soft px-2.5 py-2 text-[9px] leading-snug text-app-accent" id="preview-radius-label">radius: 16px</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="mt-2.5 flex flex-wrap items-center justify-between gap-3 text-[9px] leading-snug text-app-code-muted">
+              <span>Viewport: <span id="viewport-size">375 × 667</span></span>
+              <div class="viewport-options inline-flex items-center gap-1.5" role="group" aria-label="Preview viewport size">
+                <button class="viewport-options__button is-selected grid h-[27px] w-[27px] place-items-center rounded-md border border-transparent bg-transparent text-sm leading-none text-app-code-muted transition hover:bg-app-code-surface hover:text-white" type="button" data-viewport="mobile" aria-label="Mobile preview" aria-pressed="true">▯</button>
+                <button class="viewport-options__button grid h-[27px] w-[27px] place-items-center rounded-md border border-transparent text-sm leading-none text-app-code-muted transition hover:bg-app-code-surface hover:text-white" type="button" data-viewport="tablet" aria-label="Tablet preview" aria-pressed="false">▭</button>
+                <button class="viewport-options__button grid h-[27px] w-[27px] place-items-center rounded-md border border-transparent text-sm leading-none text-app-code-muted transition hover:bg-app-code-surface hover:text-white" type="button" data-viewport="desktop" aria-label="Desktop preview" aria-pressed="false">□</button>
+              </div>
+            </div>
+          </section>
+
+          <aside class="inspector min-w-0 rounded-[18px] border border-app-border bg-app-panel p-4 shadow-sm sm:p-6 xl:p-5 2xl:p-[22px]" id="style-controls" aria-labelledby="inspector-title">
+            <div>
+              <h2 class="mb-1.5 text-base font-bold tracking-tight text-app-ink" id="inspector-title">Customize component</h2>
+              <p class="text-[10px] leading-relaxed text-app-muted sm:text-xs">Changes update the preview instantly.</p>
+            </div>
+
+            <div class="control-tabs mt-5 grid grid-cols-3 gap-1.5 border-b border-app-border pb-1.5" role="tablist" aria-label="Style settings">
+              <button class="control-tabs__tab min-w-0 rounded-lg bg-app-accent-soft px-2 py-2 text-[10px] font-semibold text-app-accent transition sm:text-xs is-active" id="tab-style" type="button" role="tab" aria-selected="true" aria-controls="panel-style" data-tab="style">Style</button>
+              <button class="control-tabs__tab min-w-0 rounded-lg border border-app-border px-2 py-2 text-[10px] font-medium text-app-muted transition hover:bg-app-accent-soft hover:text-app-accent sm:text-xs" id="tab-color" type="button" role="tab" aria-selected="false" aria-controls="panel-color" data-tab="color">Color</button>
+              <button class="control-tabs__tab min-w-0 rounded-lg border border-app-border px-2 py-2 text-[10px] font-medium text-app-muted transition hover:bg-app-accent-soft hover:text-app-accent sm:text-xs" id="tab-shadow" type="button" role="tab" aria-selected="false" aria-controls="panel-shadow" data-tab="shadow">Shadow</button>
+            </div>
+
+            <form class="controls-form min-w-0" id="controls-form">
+              <div class="control-panel flex min-w-0 flex-col gap-5 sm:gap-6 xl:gap-[22px]" id="panel-style" role="tabpanel" aria-labelledby="tab-style" data-panel="style">
+                <div class="range-control min-w-0">
+                  <div class="mb-3 flex items-center justify-between gap-2 text-[11px]">
+                    <label class="min-w-0 text-app-ink" for="border-radius-control">Border radius</label>
+                    <output class="range-control__value shrink-0 rounded-md bg-app-canvas px-2 py-1 font-semibold text-app-accent" id="border-radius-value" for="border-radius-control">16 px</output>
+                  </div>
+                  <input class="range-control__input w-full cursor-pointer" id="border-radius-control" name="borderRadius" type="range" min="0" max="48" step="1" value="16" data-style-property="border-radius">
+                </div>
+
+                <div class="range-control min-w-0">
+                  <div class="mb-3 flex items-center justify-between gap-2 text-[11px]">
+                    <label class="min-w-0 text-app-ink" for="padding-control">Padding</label>
+                    <output class="range-control__value shrink-0 rounded-md bg-app-canvas px-2 py-1 font-semibold text-app-aqua" id="padding-value" for="padding-control">24 px</output>
+                  </div>
+                  <input class="range-control__input range-control__input--aqua w-full cursor-pointer" id="padding-control" name="padding" type="range" min="0" max="64" step="1" value="24" data-style-property="padding">
+                </div>
+
+                <fieldset class="color-picker min-w-0 rounded-xl border border-app-border p-3" id="color-controls">
+                  <legend class="px-1 text-[11px] font-medium text-app-ink">Background color</legend>
+                  <div class="color-picker__options flex flex-wrap items-center gap-2">
+                    <button class="color-swatch is-selected grid h-8 w-8 shrink-0 place-items-center rounded-full border border-app-border p-1" type="button" data-color="#635BFF" aria-label="Purple background" aria-pressed="true"><span class="h-full w-full rounded-full bg-[#635BFF]"></span></button>
+                    <button class="color-swatch grid h-8 w-8 shrink-0 place-items-center rounded-full border border-transparent p-1 transition hover:border-app-border" type="button" data-color="#25C7B5" aria-label="Aqua background" aria-pressed="false"><span class="h-full w-full rounded-full bg-[#25C7B5]"></span></button>
+                    <button class="color-swatch grid h-8 w-8 shrink-0 place-items-center rounded-full border border-transparent p-1 transition hover:border-app-border" type="button" data-color="#EF6BA8" aria-label="Pink background" aria-pressed="false"><span class="h-full w-full rounded-full bg-[#EF6BA8]"></span></button>
+                    <button class="color-swatch grid h-8 w-8 shrink-0 place-items-center rounded-full border border-transparent p-1 transition hover:border-app-border" type="button" data-color="#F6A94A" aria-label="Orange background" aria-pressed="false"><span class="h-full w-full rounded-full bg-[#F6A94A]"></span></button>
+                    <button class="color-swatch grid h-8 w-8 shrink-0 place-items-center rounded-full border border-transparent p-1 transition hover:border-app-border" type="button" data-color="#182238" aria-label="Navy background" aria-pressed="false"><span class="h-full w-full rounded-full bg-[#182238]"></span></button>
+                    <button class="color-swatch grid h-8 w-8 shrink-0 place-items-center rounded-full border border-app-border p-1 transition hover:border-app-accent" type="button" data-color="#FFFFFF" aria-label="White background" aria-pressed="false"><span class="h-full w-full rounded-full bg-white"></span></button>
+                  </div>
+                  <input type="hidden" id="background-color-control" name="backgroundColor" value="#635BFF">
+                </fieldset>
+
+                <div class="range-control range-control--opacity min-w-0">
+                  <div class="mb-3 flex items-center justify-between gap-2 text-[11px]">
+                    <label class="min-w-0 text-app-ink" for="opacity-control">Opacity</label>
+                    <output class="range-control__value shrink-0 px-1 font-semibold text-app-accent" id="opacity-value" for="opacity-control">100%</output>
+                  </div>
+                  <input class="range-control__input w-full cursor-pointer" id="opacity-control" name="opacity" type="range" min="10" max="100" step="1" value="100" data-style-property="opacity">
+                </div>
+              </div>
+
+              <div class="control-panel" id="panel-color" role="tabpanel" aria-labelledby="tab-color" data-panel="color" hidden>
+                <p class="rounded-xl bg-app-canvas p-4 text-xs leading-relaxed text-app-muted">Color settings will go here when you implement the Color tab.</p>
+              </div>
+              <div class="control-panel" id="panel-shadow" role="tabpanel" aria-labelledby="tab-shadow" data-panel="shadow" hidden>
+                <p class="rounded-xl bg-app-canvas p-4 text-xs leading-relaxed text-app-muted">Shadow settings will go here when you implement the Shadow tab.</p>
+              </div>
+
+              <div class="mt-5 flex justify-end border-t border-app-border pt-3">
+                <button class="rounded-lg px-3 py-2 text-[11px] font-semibold text-app-accent transition hover:bg-app-accent-soft" id="reset-controls-button" type="reset">Reset <span aria-hidden="true">↺</span></button>
+              </div>
+            </form>
+          </aside>
+        </div>
+
+        <section class="generated-css mt-5 min-w-0 overflow-hidden rounded-[18px] bg-app-code p-4 text-app-code-text sm:mt-6 sm:p-6 xl:p-[22px]" id="generated-css" aria-labelledby="generated-css-title">
+          <div class="mb-5 flex items-start justify-between gap-3 sm:mb-[22px] sm:items-center">
+            <div class="min-w-0">
+              <h2 class="mb-1.5 text-base font-semibold tracking-tight text-white" id="generated-css-title">Generated CSS</h2>
+              <p class="text-[10px] leading-relaxed text-app-code-muted">Synced with your live preview</p>
+            </div>
+            <span class="inline-flex min-h-[27px] shrink-0 items-center justify-center rounded-lg bg-app-code-surface px-2.5 py-1.5 font-mono text-[9px] leading-tight text-app-code-text">style.css</span>
+          </div>
+
+          <div class="code-window min-w-0 max-w-full overflow-x-auto [scrollbar-color:#3C4565_transparent] [scrollbar-width:thin]" aria-label="Generated CSS code">
+            <ol class="code-lines min-w-max list-outside list-decimal pl-8 font-mono text-[11px] leading-[1.95] text-app-code-muted tabular-nums sm:text-xs" id="generated-css-lines">
+              <li class="min-h-[22px] whitespace-pre pl-0.5"><code class="font-[inherit] whitespace-pre"><span class="text-code-selector">.card</span> <span class="text-code-punctuation">{</span></code></li>
+              <li class="min-h-[22px] whitespace-pre pl-0.5"><code class="font-[inherit] whitespace-pre"><span class="text-code-property">  border-radius:</span> <span class="text-code-value" id="css-border-radius-value">16px</span><span class="text-code-punctuation">;</span></code></li>
+              <li class="min-h-[22px] whitespace-pre pl-0.5"><code class="font-[inherit] whitespace-pre"><span class="text-code-property">  padding:</span> <span class="text-code-value" id="css-padding-value">24px</span><span class="text-code-punctuation">;</span></code></li>
+              <li class="min-h-[22px] whitespace-pre pl-0.5"><code class="font-[inherit] whitespace-pre"><span class="text-code-property">  background:</span> <span class="text-code-value" id="css-background-value">#635BFF</span><span class="text-code-punctuation">;</span></code></li>
+              <li class="min-h-[22px] whitespace-pre pl-0.5"><code class="font-[inherit] whitespace-pre"><span class="text-code-property">  opacity:</span> <span class="text-code-value" id="css-opacity-value">1</span><span class="text-code-punctuation">;</span></code></li>
+              <li class="min-h-[22px] whitespace-pre pl-0.5"><code class="font-[inherit] whitespace-pre"><span class="text-code-punctuation">}</span></code></li>
+            </ol>
+          </div>
+
+          <div class="mt-5 flex min-w-0 flex-wrap items-center justify-between gap-3 sm:mt-[22px]">
+            <p class="copy-feedback min-w-0 break-words text-[10px] leading-relaxed text-[#8EE8D8]" id="copy-feedback" aria-live="polite"></p>
+            <button class="copy-button ml-auto inline-flex min-h-[42px] max-w-full items-center justify-center gap-2 rounded-[11px] bg-app-accent px-3 py-2.5 text-center text-[11px] font-semibold leading-snug text-white transition hover:bg-app-accent-hover active:translate-y-px sm:min-h-[46px] sm:px-4" id="copy-css-button" type="button">
+              <span>Copy CSS to clipboard</span><span class="text-[15px] leading-none" aria-hidden="true">⧉</span>
+            </button>
+          </div>
+        </section>
+
+        <footer class="page-footer pt-5 text-[10px] leading-relaxed text-app-muted">
+          <p>CSS Tools <span aria-hidden="true">·</span> Built for developers</p>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
